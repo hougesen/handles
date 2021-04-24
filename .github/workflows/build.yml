@@ -1,0 +1,36 @@
+name: Build Frontend
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      #    - name: Prettify code
+      #      uses: creyD/prettier_action@v3.1
+      #      with:
+      # This part is also where you can pass other options, for example:
+      #        prettier_options: --write **/*.{js,md}
+      #      env:
+      #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Packages
+        working-directory: ./client
+        run: npm install
+      - name: Build page
+        working-directory: ./client
+        run: npm run build
+      - uses: EndBug/add-and-commit@v7 # You can change this to use a specific version
+        with:
+          add: "['./server','./client']"
+          message: 'Automatic frontend build'
