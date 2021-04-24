@@ -1,0 +1,88 @@
+<template>
+  <div id="app">
+    <router-view />
+  </div>
+</template>
+<script>
+export default {
+  metaInfo: {
+    title: "Link Landing Page Generator"
+  },
+  beforeCreate() {
+    this.$store.commit("initStore");
+  }
+};
+</script>
+
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap");
+$mobileBreakpoint: 600px;
+$tabletBreakpoint: 1367px;
+:root {
+  --black: #101010;
+  --highlight-color: #ff142e;
+  --tree-background: #101010;
+  --tree-text: white;
+  --default-background: #1c1d2d;
+  --secondary-background: #2c2e42;
+  --default-text-color: rgb(230, 230, 230);
+  --blue: #4146a0;
+  --light-blue: #6874e8;
+  --red: #a04141;
+  --green: #4ea041;
+  --default-border-radius: 5px;
+  --dark-grey: #3e3f50;
+  --light-grey: #789;
+  --blue-gradient: linear-gradient(
+    90deg,
+    #6874e8,
+    #6474e8,
+    #5f73e8,
+    #5a73e8,
+    #5573e8,
+    #4f73e8,
+    #4972e8,
+    #4372e8
+  );
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+html {
+  scroll-behavior: smooth;
+}
+body,
+html {
+  font-family: "Open Sans", sans-serif;
+  height: 100%;
+  padding-top: 0;
+  width: 100%;
+  color: var(--black);
+  background-color: var(--default-background);
+  color: var(--default-text-color);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  cursor: pointer;
+  color: var(--default-text-color);
+}
+</style>
