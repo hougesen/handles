@@ -1,6 +1,5 @@
 // helpers
 const express = require('express');
-
 const Hashing = require('../helpers/hashing');
 
 // models
@@ -38,10 +37,12 @@ router.post('/newUser', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-  const user = await Users.findOne({ email: req.body.email, password: req.body.password });
+  console.log(`email: ${req.body.email}, password: ${req.body.password}`);
+  const user = await Users.findOne({ email: req.body.email });
+
   if (!user) return res.status(404).send({ auth: false, msg: 'No user with that email' });
 
-  if (user.password == (await Hashing.verifyHash(req.body.password))) {
+  if (await Hashing.verifyHash(user.password, req.body.password)) {
     res.status(200).send({ auth: true, msg: 'Logged in', userId: user._id, username: user.username });
   } else {
     res.status(500).send({ auth: false, msg: 'Wrong email/password' });
