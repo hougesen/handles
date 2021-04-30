@@ -14,12 +14,12 @@ async function uniqueEmail(email) {
 }
 
 router.post('/newUser', async (req, res) => {
-  const emailInUse = await uniqueEmail(req.body.email);
+  const emailInUse = await uniqueEmail(req.body.email.toLowerCase());
   if (emailInUse) return res.status(500).send({ auth: false, msg: 'Email already in use' });
 
   const new_user = {
     username: req.body.username,
-    email: req.body.email,
+    email: req.body.email.toLowerCase(),
     password: await Hashing.hashString(req.body.password),
   };
 

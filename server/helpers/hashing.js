@@ -11,7 +11,8 @@ class Hashing {
   }
 
   static async verifyHash(hash, string) {
-    try {
+    return argon2.verify(hash, string) ? true : false;
+    /*     try {
       if (await argon2.verify(hash, string)) {
         return true;
       } else {
@@ -19,7 +20,8 @@ class Hashing {
       }
     } catch (err) {
       console.log('err');
-    }
+      return false;
+    } */
   }
 }
 
