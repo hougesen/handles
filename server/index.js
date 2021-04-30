@@ -9,6 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+// Prod check
 if (process.env.NODE_ENV != 'production') require('dotenv').config();
 console.log(process.env.NODE_ENV);
 console.log(process.env.MONGODB_SRC);
