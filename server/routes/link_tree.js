@@ -1,6 +1,5 @@
 // helpers
 const express = require('express');
-const Generator = require('../helpers/Generator');
 
 // models
 const Trees = require('../models/trees');
