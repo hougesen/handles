@@ -2,6 +2,28 @@
   <div class="tree">
     <form @submit.prevent="updateTree" class="tree-form">
       <div v-for="(item, itemIndex) in tree.links" :key="itemIndex" class="link">
+        <div class="moveButtons">
+          <div class="up" @click="moveItem(itemIndex, 'up')" v-if="itemIndex != 0">
+            <svg viewBox="0 0 320 512" class="move-icon">
+              <path
+                d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
+              ></path>
+            </svg>
+          </div>
+
+          <div
+            class="down"
+            @click="moveItem(itemIndex, 'down')"
+            v-if="itemIndex != tree.links.length - 1"
+          >
+            <svg viewBox="0 0 320 512" class="move-icon">
+              <path
+                d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
         <div class="input-container">
           <div class="input">
             <label>
@@ -96,6 +118,13 @@ export default {
     },
     removeItem(index) {
       this.tree.links.splice(index, 1);
+    },
+    moveItem(index, direction) {
+      if (direction === "up") {
+        this.tree.links.splice(index - 1, 0, this.tree.links.splice(index, 1)[0]);
+      } else {
+        this.tree.links.splice(index + 1, 0, this.tree.links.splice(index, 1)[0]);
+      }
     }
   }
 };
@@ -142,6 +171,39 @@ $secondaryColor: #2c2e42;
 
   padding: 0.5rem;
   color: var(--default-text-color);
+
+  .moveButtons {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    .up,
+    .down {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      cursor: pointer;
+    }
+    .up {
+      -webkit-transform: rotate(90deg); // Safari and Chrome
+      -moz-transform: rotate(90deg); // Firefox
+      -ms-transform: rotate(90deg); // IE 9
+      -o-transform: rotate(90deg); // Opera
+      transform: rotate(90deg);
+    }
+    .down {
+      -webkit-transform: rotate(270deg); // Safari and Chrome
+      -moz-transform: rotate(270deg); // Firefox
+      -ms-transform: rotate(270deg); // IE 9
+      -o-transform: rotate(270deg); // Opera
+      transform: rotate(270deg);
+    }
+
+    .move-icon {
+      width: 20px;
+      fill: var(--default-text-color);
+    }
+  }
+
   .input-container {
     display: flex;
     flex-direction: column;

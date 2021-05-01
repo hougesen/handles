@@ -55,7 +55,7 @@ export default {
 $secondaryColor: #2c2e42;
 
 #admin {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   h1 {
     text-align: center;
