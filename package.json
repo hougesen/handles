@@ -1,11 +1,12 @@
 {
-  "name": "link-landing-page-generator",
+  "name": "handles-server",
   "version": "1.0.0",
   "description": "Open source linktree alternative.",
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
+    "dev": "nodemon server/index.js",
+    "format": "npx prettier --write ."
   },
   "contributors": [
     "Mads Hougesen <mads@mhouge.dk> (https://mhouge.dk)"
@@ -21,6 +22,7 @@
     "mongoose": "^5.12.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.2"
   }
 }

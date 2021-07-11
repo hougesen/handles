@@ -12,18 +12,18 @@
 </template>
 
 <script>
-import TreeService from "../helpers/TreeService";
+import TreeService from '../helpers/TreeService';
 
 export default {
-  name: "Tree",
+  name: 'Tree',
   data() {
     return {
-      tree: null
+      tree: null,
     };
   },
   metaInfo() {
     return {
-      title: this.metaTitle
+      title: this.metaTitle,
     };
   },
   beforeMount() {
@@ -34,19 +34,19 @@ export default {
       let title = `${this.$route.params.shortCode}'s Links`;
 
       return title[0].toUpperCase() + title.substring(1);
-    }
+    },
   },
   methods: {
     async getTree() {
       const treeShortCode = this.$route.params.shortCode;
       console.log(treeShortCode);
       const request = await TreeService.getTree(treeShortCode);
-      console.log("request:", request);
+      console.log('request:', request);
       this.tree = request;
 
-      console.log("this.tree", this.tree);
-    }
-  }
+      console.log('this.tree', this.tree);
+    },
+  },
 };
 </script>
 

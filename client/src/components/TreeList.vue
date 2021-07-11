@@ -5,9 +5,7 @@
     <div v-if="trees">
       <div v-for="(tree, treeIndex) in trees" :key="treeIndex">
         <h2>{{ tree.treeTitle }}</h2>
-        <button @click="editTree(tree._id)">
-          Edit
-        </button>
+        <button @click="editTree(tree._id)">Edit</button>
 
         <button @click="viewTree(tree._id)">View</button>
       </div>
@@ -16,18 +14,18 @@
 </template>
 
 <script>
-import TreeService from "@/helpers/TreeService";
+import TreeService from '@/helpers/TreeService';
 export default {
-  name: "TreeList",
+  name: 'TreeList',
   data() {
     return {
-      trees: null
+      trees: null,
     };
   },
   computed: {
     getUserId() {
       return this.$store.getters.getUserId;
-    }
+    },
   },
   beforeMount() {
     this.getTreeList();
@@ -40,13 +38,13 @@ export default {
     },
 
     editTree(treeId) {
-      console.log("editTree", treeId);
+      console.log('editTree', treeId);
     },
 
     viewTree(treeId) {
-      console.log("viewTree", treeId);
-    }
-  }
+      console.log('viewTree', treeId);
+    },
+  },
 };
 </script>
 

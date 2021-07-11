@@ -4,9 +4,7 @@
       <button @click="viewTree">View tree</button>
 
       <input type="text" v-model="getTreeUrl" id="treeUrl" readonly />
-      <button @click="copyTreeUrl">
-        Copy tree link
-      </button>
+      <button @click="copyTreeUrl">Copy tree link</button>
     </div>
 
     <NewTree />
@@ -14,15 +12,15 @@
 </template>
 
 <script>
-import NewTree from "../components/EditTree.vue";
+import NewTree from '../components/EditTree.vue';
 export default {
-  name: "Admin",
+  name: 'Admin',
   metaInfo: {
-    title: "Admin",
+    title: 'Admin',
 
     htmlAttrs: {
-      lang: "en"
-    }
+      lang: 'en',
+    },
   },
 
   components: { NewTree },
@@ -33,21 +31,21 @@ export default {
     getTreeUrl() {
       let location = window.location.origin;
       return `${location}/t/${this.getUsername}`;
-    }
+    },
   },
   methods: {
     viewTree() {
-      window.open(this.getTreeUrl, "_blank");
+      window.open(this.getTreeUrl, '_blank');
     },
     copyTreeUrl() {
-      let url = this.$el.querySelector("#treeUrl");
+      let url = this.$el.querySelector('#treeUrl');
 
-      url.setAttribute("type", "text");
+      url.setAttribute('type', 'text');
       url.select();
       url.setSelectionRange(0, 99999);
-      document.execCommand("copy");
-    }
-  }
+      document.execCommand('copy');
+    },
+  },
 };
 </script>
 

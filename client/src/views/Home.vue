@@ -2,10 +2,8 @@
   <div id="dashboard">
     <div class="hero">
       <div class="hero-text">
-        <h1>Link Landing Page Generator</h1>
-        <p>
-          Connect your audience to all your content with just one link
-        </p>
+        <h1>Handles</h1>
+        <p>Connect your audience to all your content with just one link.</p>
       </div>
 
       <div class="buttons">
@@ -18,15 +16,15 @@
 
 <script>
 export default {
-  name: "Home",
+  name: 'Home',
   methods: {
     goToRegister() {
-      this.$router.push("/register");
+      this.$router.push('/register');
     },
     goToLogin() {
-      this.$router.push("/login");
-    }
-  }
+      this.$router.push('/login');
+    },
+  },
 };
 </script>
 

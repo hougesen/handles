@@ -6,16 +6,16 @@
 <script>
 export default {
   metaInfo: {
-    title: "Link Landing Page Generator"
+    title: 'Handles',
   },
   beforeCreate() {
-    this.$store.commit("initStore");
-  }
+    this.$store.commit('initStore');
+  },
 };
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
 $mobileBreakpoint: 600px;
 $tabletBreakpoint: 1367px;
 :root {
@@ -33,17 +33,7 @@ $tabletBreakpoint: 1367px;
   --default-border-radius: 5px;
   --dark-grey: #3e3f50;
   --light-grey: #789;
-  --blue-gradient: linear-gradient(
-    90deg,
-    #6874e8,
-    #6474e8,
-    #5f73e8,
-    #5a73e8,
-    #5573e8,
-    #4f73e8,
-    #4972e8,
-    #4372e8
-  );
+  --blue-gradient: linear-gradient(90deg, #6874e8, #6474e8, #5f73e8, #5a73e8, #5573e8, #4f73e8, #4972e8, #4372e8);
 }
 * {
   margin: 0;
@@ -65,7 +55,7 @@ html {
 }
 body,
 html {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   height: 100%;
   padding-top: 0;
   width: 100%;
@@ -78,7 +68,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 button {

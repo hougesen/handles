@@ -11,20 +11,12 @@
       />
 
       <label for="email"> Email </label>
-      <input
-        type="email"
-        placeholder="lord@voldemort.com"
-        name="email"
-        v-model="email"
-        autocomplete="current-email"
-      />
+      <input type="email" placeholder="lord@voldemort.com" name="email" v-model="email" autocomplete="current-email" />
 
       <label for="password">Password</label>
       <input type="password" name="password" v-model="password" autocomplete="current-password" />
 
-      <button type="submit">
-        Signup
-      </button>
+      <button type="submit">Signup</button>
 
       <p>
         {{ errMsg }}
@@ -34,16 +26,16 @@
 </template>
 
 <script>
-import AccountService from "@/helpers/AccountService";
+import AccountService from '@/helpers/AccountService';
 
 export default {
-  name: "RegisterForm",
+  name: 'RegisterForm',
   data() {
     return {
-      username: "",
-      email: "",
-      password: "",
-      errMsg: null
+      username: '',
+      email: '',
+      password: '',
+      errMsg: null,
     };
   },
   methods: {
@@ -51,15 +43,15 @@ export default {
       let request = await AccountService.createUser(this.email, this.password, this.username);
       console.log(request);
       if (request.auth) {
-        this.$store.commit("setUserId", request.userId);
-        this.$store.commit("setUsername", request.username);
+        this.$store.commit('setUserId', request.userId);
+        this.$store.commit('setUsername', request.username);
 
-        this.$router.push("/admin");
+        this.$router.push('/admin');
       } else {
         this.errMsg = request.msg;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

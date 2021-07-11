@@ -2,13 +2,7 @@
   <div>
     <form @submit.prevent="loginToUser">
       <label for="email"> Email </label>
-      <input
-        type="email"
-        placeholder="lord@voldemort.com"
-        name="email"
-        v-model="email"
-        autocomplete="current-email"
-      />
+      <input type="email" placeholder="lord@voldemort.com" name="email" v-model="email" autocomplete="current-email" />
 
       <label for="password">Password</label>
       <input type="password" name="password" v-model="password" autocomplete="current-password" />
@@ -21,14 +15,14 @@
 </template>
 
 <script>
-import AccountService from "@/helpers/AccountService";
+import AccountService from '@/helpers/AccountService';
 export default {
-  name: "LoginForm",
+  name: 'LoginForm',
   data() {
     return {
-      email: "",
-      password: "",
-      errMsg: null
+      email: '',
+      password: '',
+      errMsg: null,
     };
   },
   methods: {
@@ -36,14 +30,14 @@ export default {
       let request = await AccountService.login(this.email, this.password);
       console.log(request);
       if (request.auth) {
-        this.$store.commit("setUserId", request.userId);
-        this.$store.commit("setUsername", request.username);
-        this.$router.push("/admin");
+        this.$store.commit('setUserId', request.userId);
+        this.$store.commit('setUsername', request.username);
+        this.$router.push('/admin');
       } else {
         this.errMsg = request.msg;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

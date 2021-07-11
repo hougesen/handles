@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 class TreeService {
   static getTree(treeId) {
@@ -7,8 +7,8 @@ class TreeService {
 
     return axios
       .get(url)
-      .then(response => response.data)
-      .catch(err => {
+      .then((response) => response.data)
+      .catch((err) => {
         console.log(err.response.data);
         return err.response.data;
       });
@@ -18,8 +18,8 @@ class TreeService {
     const url = `api/tree/userTree/${userId}`;
     return axios
       .get(url)
-      .then(response => response.data)
-      .catch(err => {
+      .then((response) => response.data)
+      .catch((err) => {
         console.log(err.response.data);
         return err.response.data;
       });
@@ -28,8 +28,8 @@ class TreeService {
     const url = `api/tree/newTree`;
     return axios
       .post(url, { userId, links })
-      .then(response => response.data)
-      .catch(err => {
+      .then((response) => response.data)
+      .catch((err) => {
         console.log(err.response.data);
         return err.response.data;
       });
@@ -39,8 +39,8 @@ class TreeService {
     const url = `api/tree/updateTree`;
     return axios
       .put(url, { treeId, links })
-      .then(response => response.data)
-      .catch(err => {
+      .then((response) => response.data)
+      .catch((err) => {
         console.log(err.response.data);
         return err.response.data;
       });

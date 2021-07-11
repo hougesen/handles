@@ -5,7 +5,7 @@
 </template>
 
 <script>
-export default { name: "PopUp" };
+export default { name: 'PopUp' };
 </script>
 
 <style lang="scss" scoped></style>

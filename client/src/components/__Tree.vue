@@ -18,17 +18,17 @@
 </template>
 
 <script>
-import TreeService from "../helpers/TreeService";
+import TreeService from '../helpers/TreeService';
 
 export default {
-  name: "Tree",
+  name: 'Tree',
   data() {
     return {
-      tree: null
+      tree: null,
     };
   },
   beforeMount() {
-    console.log("Tree", this.$route.query);
+    console.log('Tree', this.$route.query);
     // this.getTree();
   },
 
@@ -38,8 +38,8 @@ export default {
       this.tree = request;
 
       console.log(this.tree);
-    }
-  }
+    },
+  },
 };
 </script>
 

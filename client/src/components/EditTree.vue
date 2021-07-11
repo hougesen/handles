@@ -11,11 +11,7 @@
             </svg>
           </div>
 
-          <div
-            class="down"
-            @click="moveItem(itemIndex, 'down')"
-            v-if="itemIndex != tree.links.length - 1"
-          >
+          <div class="down" @click="moveItem(itemIndex, 'down')" v-if="itemIndex != tree.links.length - 1">
             <svg viewBox="0 0 320 512" class="move-icon">
               <path
                 d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
@@ -26,23 +22,17 @@
 
         <div class="input-container">
           <div class="input">
-            <label>
-              Title:
-            </label>
+            <label> Title: </label>
             <input type="text" v-model="item.title" placeholder="Title" required />
           </div>
 
           <div class="input">
-            <label>
-              Link:
-            </label>
+            <label> Link: </label>
             <input type="url" v-model="item.link" placeholder="Url" required />
           </div>
         </div>
 
-        <button type="button" @click="removeItem(itemIndex)" class="removeLinkButton">
-          X
-        </button>
+        <button type="button" @click="removeItem(itemIndex)" class="removeLinkButton">X</button>
       </div>
 
       <button type="button" @click="addItem" class="button cta-secondary">Add new link</button>
@@ -53,27 +43,27 @@
 </template>
 
 <script>
-import TreeService from "@/helpers/TreeService";
+import TreeService from '@/helpers/TreeService';
 export default {
-  name: "EditTree",
+  name: 'EditTree',
   data() {
     return {
       tree: {
-        treeTitle: "",
+        treeTitle: '',
         links: [
           {
-            title: "",
-            link: "",
-            description: ""
-          }
-        ]
-      }
+            title: '',
+            link: '',
+            description: '',
+          },
+        ],
+      },
     };
   },
   computed: {
     getUserId() {
       return this.$store.getters.getUserId;
-    }
+    },
   },
   beforeMount() {
     this.getUserTree();
@@ -87,7 +77,7 @@ export default {
     },
 
     async updateTree() {
-      console.log("updateTree");
+      console.log('updateTree');
 
       let request;
       if (this.tree._id) {
@@ -97,11 +87,11 @@ export default {
         this.tree._id = request.t._id;
       }
 
-      let button = this.$el.querySelector("#saveButton");
-      button.innerHTML = "Updated";
+      let button = this.$el.querySelector('#saveButton');
+      button.innerHTML = 'Updated';
 
       setTimeout(() => {
-        button.innerHTML = "Save";
+        button.innerHTML = 'Save';
       }, 1200);
 
       console.log(button.innerHTML);
@@ -109,24 +99,24 @@ export default {
     },
 
     addItem() {
-      console.log("addItem");
+      console.log('addItem');
       this.tree.links.push({
-        title: "",
-        link: "",
-        description: ""
+        title: '',
+        link: '',
+        description: '',
       });
     },
     removeItem(index) {
       this.tree.links.splice(index, 1);
     },
     moveItem(index, direction) {
-      if (direction === "up") {
+      if (direction === 'up') {
         this.tree.links.splice(index - 1, 0, this.tree.links.splice(index, 1)[0]);
       } else {
         this.tree.links.splice(index + 1, 0, this.tree.links.splice(index, 1)[0]);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
