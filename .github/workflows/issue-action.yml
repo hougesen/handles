@@ -1,4 +1,4 @@
-name: "Set Issue Label and Assignee"
+name: 'Set Issue Label and Assignee'
 on:
   issues:
     types: [opened]
@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: Naturalclar/issue-action@v2.0.2
         with:
-          title-or-body: "both"
+          title-or-body: 'both'
           parameters: '[ {"keywords": ["backend", "database", "db"], "assignees": ["Tubnielsen", "DenBedste"]}, {"keywords": ["frontend", "design"], "assignees": ["Hougesen"]}, {"keywords": ["design"], "assignees": ["Hougesen"]}]'
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
